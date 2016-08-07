@@ -11,9 +11,19 @@ namespace StringParser.ConsoleApp
     {
         static void Main(string[] args)
         {
-            string sample = "(id,created,employee(id,firstname,employeeType(id), lastname),location)";
-            var parser = new Parser(sample);
-            parser.Parse().WriteInOrder();
+            string input = "(id,created,employee(id,firstname,employeeType(id), lastname),location)";
+            var parser = new Parser(input).Parse();
+
+            Console.WriteLine("---------------Input---------------------" + Environment.NewLine);
+            Console.WriteLine(input + Environment.NewLine);
+            
+            Console.WriteLine("---------UnOrdered Output--------------");
+            Console.WriteLine(parser.ToString());
+
+
+            Console.WriteLine("---------Ordered Output--------------");
+            parser.WriteInOrder();
+
             Console.ReadLine();
         }
     }
